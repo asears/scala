@@ -16,14 +16,11 @@ The following points describe how to build Scala using Eclipse.
 path to your Scala checkout. All paths in the project files are relative to this one,
 so nothing will work before you do so.
 
-  The same `SCALA_BASEDIR` variable needs to be defined as a `classpath variable` in
-`Java/Build Path/Classpath Variables`.
+0. The same `SCALA_BASEDIR` variable needs to be defined as a `classpath variable` in`Java/Build Path/Classpath Variables`.
 
-  Additionally, we start using Maven dependencies (e.g. `JUnit`) so you need to define another
-`classpath variable` inside Eclipse. Define `M2_REPO` in `Java/Build Path/Classpath Variables`
-to point to your local Maven repository (e.g. `$HOME/.m2/repository`).
+0. For Maven dependencies, (e.g. `JUnit`) define another `classpath variable` inside Eclipse. Define `M2_REPO` in `Java/Build Path/Classpath Variables` to point to your local Maven repository (e.g. `$HOME/.m2/repository`).
 
-  Lastly, the JRE used by Eclipse needs to know the path to the `JLine` library, which is used by the REPL.
+0. The JRE used by Eclipse needs to know the path to the `JLine` library, which is used by the REPL.
 To set the JAR file, navigate to `Java/Installed JREs`, select the default JRE, press `Edit/Add External JARs...`
 and enter the path to JLine whose location is `SCALA_BASEDIR/build/deps/repl/jline-2.11.jar` (`SCALA_BASEDIR` cannot be entered,
 it needs to be replaced with its absolute path).
@@ -35,7 +32,7 @@ JDK. The Scala library uses such APIs, so you'd see this error:
         from the type Unsafe is not accessible due to restriction on required library.
 
   You can *fix* it by allowing calls to restricted APIs in `Java/Compiler/Errors/Warnings/Deprecated and Restricted API`
-settings.
+settings. Set `Forbidden references (access rules):` to `Warning`
 
 0. Project files are tracked by Git, so adding them to `.gitignore` won't prevent them
 from being shown as dirty in `git status`. You can still ignore them by telling Git to
